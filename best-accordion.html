@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title> Accordion </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	</head>
+	<body>
+		<!-- CSS -->
+		<style>
+			.accordion{width:500px; margin: 0 auto;}
+			.accordion-toggle {border-bottom: 1px solid #cccccc;cursor: pointer;margin: 0;padding: 10px 0;position: relative;}
+			.accordion-toggle.active:after{content:"";position:absolute;right:0;top:17px;width:0;height:0;border-bottom:5px solid #f00;border-left:5px solid rgba(0,0,0,0);border-right:5px solid rgba(0,0,0,0);}
+			.accordion-toggle:before{content:"";position:absolute;right:0;top:17px;width:0;height:0;border-top:5px solid #000;border-left:5px solid rgba(0,0,0,0);border-right:5px solid rgba(0,0,0,0);}
+			.accordion-toggle.active:before{display:none;}
+			.accordion-content {display: none;}
+			.accordion-toggle.active {color: #ff0000;}
+		</style>
+		<!-- CSS -->
+		<!-- HTML -->
+		<div class="accordion">
+			<h4 class="accordion-toggle">Accordion 1</h4>
+			<div class="accordion-content">
+				<p>
+					Cras malesuada ultrices augue molestie risus.
+				</p>
+			</div>
+			
+			<h4 class="accordion-toggle">Accordion 2</h4>
+			<div class="accordion-content">
+				<p>
+					Lorem ipsum dolor sit amet mauris eu turpis.
+				</p>
+			</div>
+			
+			<h4 class="accordion-toggle">Accordion 3</h4>
+			<div class="accordion-content">
+				<p>
+					Vivamus facilisisnibh scelerisque laoreet.
+				</p>
+			</div>
+		</div>
+
+		<!-- Jquery -->
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.accordion').find('.accordion-toggle').click(function() {
+					$(this).next().slideToggle('600');
+					$(".accordion-content").not($(this).next()).slideUp('600');
+				});
+				$('.accordion-toggle').on('click', function() {
+					$(this).toggleClass('active').siblings().removeClass('active');
+				});
+			});
+		</script>
+		<!-- Jquery -->
+	</body>
+</html>
